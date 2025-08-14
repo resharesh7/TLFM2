@@ -1,127 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>True Life Family and Ministries</title>
+<meta name="theme-color" content="#4B0082"/>
+
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-    background-color: black;
-    overflow-x: hidden;
+  :root{
+    --purple:#4B0082;
+    --gold:#FFD700;
+    --gold-soft:#ffe394;
+    --ink:#000;
+    --text:#fff;
+    --glass: rgba(0,0,0,.55);
   }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:#000;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif;scroll-behavior:smooth;overflow-x:hidden}
 
-  /* Sunset Horizon Background */
-  .hero {
-    position: relative;
-    height: 100vh;
-    background: url('https://images.unsplash.com/photo-1501973801540-537f08ccae7b') center/cover no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  /* ===== BACKGROUND: SUNSET + GOLDEN RIVER ===== */
+  .sky{
+    position:fixed; inset:0; z-index:-4;
+    background:
+      radial-gradient(1200px 520px at 50% 58%, rgba(255,220,120,.35), transparent 60%),
+      linear-gradient(to top,
+        #0a0411 0%,
+        #1b0833 25%,
+        #3b0e6b 45%,
+        #8f44d6 65%,
+        #ffb464 82%,
+        #ffdba2 90%,
+        #2b0d4e 100%);
   }
-
-  /* Flowing River Animation */
-  .river {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 200px;
-    background: url('https://i.ibb.co/X3Jv4Qn/river-water-texture.jpg') repeat-x;
-    background-size: cover;
-    animation: flow 10s linear infinite;
-    opacity: 0.8;
+  .sun{
+    position:fixed; left:50%; top:55%;
+    width:min(36vmin,420px); height:min(36vmin,420px);
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle at 50% 50%, #fff4c1 0%, #ffd36b 40%, rgba(255,217,0,0) 70%);
+    mix-blend-mode:screen; opacity:.9; filter:blur(1px);
+    z-index:-3; animation:pulseSun 10s ease-in-out infinite;
   }
+  @keyframes pulseSun{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.06)}}
 
-  @keyframes flow {
-    0% { background-position: 0 0; }
-    100% { background-position: 1000px 0; }
+  /* Stylized golden river (SVG + animated turbulence + shimmer pass) */
+  .riverWrap{
+    position:fixed; left:0; right:0; bottom:0; height:46vh; z-index:-2; pointer-events:none;
   }
+  svg#river{width:100%; height:100%; display:block}
 
-  /* Title Styles */
-  h1 {
-    font-size: 2.8rem;
-    color: gold;
-    text-shadow: 2px 2px 8px black;
+  /* ===== HEADER ===== */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:var(--glass); backdrop-filter:saturate(140%) blur(8px);
+    border-bottom:1px solid rgba(255,215,0,.22);
   }
-
-  h2 {
-    font-size: 1.5rem;
-    color: #d4af37;
-    text-shadow: 1px 1px 5px black;
+  .bar{
+    max-width:1200px; margin:0 auto; padding:.9rem 1rem;
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
   }
-
-  /* Buttons */
-  .btn {
-    background: purple;
-    color: gold;
-    padding: 12px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s;
-    text-decoration: none;
+  .brand{
+    display:flex; align-items:center; gap:.8rem; color:var(--gold); font-weight:800; letter-spacing:.3px;
+    text-shadow:0 0 16px rgba(255,215,0,.35);
   }
-  .btn:hover {
-    background: gold;
-    color: purple;
-    transform: scale(1.1);
+  .brand .mark{
+    width:38px; height:38px; position:relative; filter:drop-shadow(0 0 10px rgba(255,215,0,.6));
   }
-
-  /* Sections */
-  section {
-    padding: 50px 20px;
-    background: black;
-    text-align: center;
-  }
-
-  iframe {
-    max-width: 100%;
-    border: none;
-    border-radius: 12px;
-  }
-
-  /* Mobile Responsive */
-  @media (max-width: 768px) {
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.2rem; }
-  }
-</style>
-</head>
-<body>
-
-<!-- Hero Section -->
-<div class="hero">
-  <h1>True Life Family and Ministries</h1>
-  <h2>"Bringing Light, Love & Truth to the Nations"</h2>
-  <a href="#donate" class="btn">Give: Tithes / Seed / Offering</a>
-  <a href="#live" class="btn">Watch Live</a>
-  <div class="river"></div>
-</div>
-
-<!-- Live Video Section -->
-<section id="live">
-  <h2>Live Sermon</h2>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID" allowfullscreen></iframe>
-</section>
-
-<!-- Past Videos Section -->
-<section id="videos">
-  <h2>Past Sermons</h2>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
-</section>
-
-<!-- Donate Section -->
-<section id="donate">
-  <h2>Give Tithes / Seeds / Offering</h2>
-  <a href="https://buy.stripe.com/test_4gw6pT2QW7NbdZ6cMM" target="_blank" class="btn">Donate Securely</a>
-</section>
-
-</body>
-</html>
+  .brand .mark::before,.brand .mark::after{
+    content:""; position:absolute; left:5
