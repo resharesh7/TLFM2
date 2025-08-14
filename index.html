@@ -1,140 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>True Life Family and Ministries</title>
-<style>
-  :root {
-    --purple: #4B0082;
-    --gold: #FFD700;
-    --black: #000;
-    --text: #fff;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:Arial,sans-serif;color:var(--text);overflow-x:hidden;background:linear-gradient(180deg,var(--purple),var(--black));position:relative}
+/* === SCENE / SKY === */
+.scene{
+  position:fixed; inset:0; z-index:-3;
+  background:
+    radial-gradient(1200px 500px at 50% 55%, rgba(255,215,0,0.3), transparent 60%),
+    linear-gradient(to top, #12061a 0%, #2a0d4b 35%, #6f2fc1 55%, #8b3bd1 65%, #ffb25e 82%, #ffd391 90%, #2a0d4b 100%);
+}
 
-  /* ===== Background Wave Effect ===== */
-  .wave{
-    position:absolute;bottom:0;width:200%;height:50%;background:linear-gradient(to top,rgba(255,215,0,0.1),transparent);opacity:0.4;
-    animation:waveMove 10s linear infinite;
-    z-index:0;
-  }
-  @keyframes waveMove{
-    0%{transform:translateX(0)}
-    100%{transform:translateX(-50%)}
-  }
+/* === RIVER GRADIENT === */
+<linearGradient id="riverGradient" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0%" stop-color="#4b0b87"/>
+  <stop offset="35%" stop-color="#6f2fc1"/>
+  <stop offset="60%" stop-color="#8b3bd1"/>
+  <stop offset="85%" stop-color="#ffd36b"/>
+  <stop offset="100%" stop-color="#2a0d4b"/>
+</linearGradient>
 
-  /* ===== Floating Bible Icons ===== */
-  .bible{
-    position:absolute;font-size:28px;color:var(--gold);animation:floatUp linear infinite;opacity:0.8;
-  }
-  @keyframes floatUp{
-    0%{transform:translateY(100vh);opacity:0}
-    10%{opacity:0.8}
-    100%{transform:translateY(-20vh);opacity:0}
-  }
+/* === HEADINGS & BUTTONS === */
+h1{
+  font-size:clamp(28px, 5vw, 56px);
+  margin:.2rem 0 .8rem; line-height:1.06;
+  color:#fff; 
+  text-shadow:0 0 16px rgba(139,59,209,.75); /* increased purple glow */
+}
 
-  /* ===== Header ===== */
-  header{
-    position:sticky;top:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);padding:1rem;text-align:center;z-index:10;
-  }
-  header h1{color:var(--gold);font-size:clamp(24px,5vw,40px);}
-
-  /* ===== Hero Section ===== */
-  .hero{text-align:center;padding:4rem 1rem;position:relative;z-index:1;}
-  .hero p{color:var(--gold);margin:1rem 0;font-size:clamp(16px,3vw,22px);}
-
-  .ctaRow{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem;}
-  .btn{padding:.7rem 1.2rem;border-radius:8px;text-decoration:none;font-weight:bold;background:var(--gold);color:var(--purple);transition:transform .2s ease}
-  .btn:hover{transform:scale(1.05);}
-
-  /* ===== Sections ===== */
-  section{padding:3rem 1rem;text-align:center;position:relative;z-index:1;}
-  section h2{color:var(--gold);font-size:clamp(20px,4vw,30px);margin-bottom:1rem;}
-  iframe{width:100%;max-width:600px;height:340px;border:none;border-radius:12px;margin:0.5rem 0;}
-
-  /* ===== Worship Audio Button ===== */
-  .audioFab{
-    position:fixed;right:1rem;bottom:1rem;padding:.8rem 1rem;border-radius:999px;background:var(--purple);color:var(--gold);font-weight:bold;cursor:pointer;z-index:20;
-  }
-</style>
-</head>
-<body>
-
-<!-- Floating Wave -->
-<div class="wave"></div>
-
-<!-- Floating Bible Icons -->
-<script>
-  const iconsCount = 15;
-  for(let i=0;i<iconsCount;i++){
-    const b=document.createElement('div');
-    b.className='bible';
-    b.style.left=Math.random()*100+'vw';
-    b.style.animationDuration=(6+Math.random()*6)+'s';
-    b.style.fontSize=(20+Math.random()*16)+'px';
-    b.textContent='📖';
-    document.body.appendChild(b);
-  }
-</script>
-
-<!-- Header -->
-<header>
-  <h1>True Life Family and Ministries</h1>
-</header>
-
-<!-- Hero -->
-<section class="hero">
-  <p>"Bringing Light, Love & Truth to the Nations"</p>
-  <div class="ctaRow">
-    <a class="btn" href="#give">Give: Tithes / Seed / Offering</a>
-    <a class="btn" href="#live">Watch Live</a>
-  </div>
-</section>
-
-<!-- Live Video -->
-<section id="live">
-  <h2>Live Service</h2>
-  <iframe src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID" allowfullscreen></iframe>
-</section>
-
-<!-- Past Sermons -->
-<section id="sermons">
-  <h2>Past Sermons</h2>
-  <iframe src="https://www.youtube.com/embed/VIDEO_ID_ONE" allowfullscreen></iframe>
-  <iframe src="https://www.youtube.com/embed/VIDEO_ID_TWO" allowfullscreen></iframe>
-</section>
-
-<!-- Donate -->
-<section id="give">
-  <h2>Give: Donate / Tithes / Seed</h2>
-  <div class="ctaRow">
-    <a class="btn" href="https://your-stripe-link.com" target="_blank">Stripe</a>
-    <a class="btn" href="https://paypal.me/YourPayPal" target="_blank">PayPal</a>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer style="text-align:center;color:#FFD700;padding:2rem 1rem;">© <span id="year"></span> True Life Family and Ministries</footer>
-
-<!-- Worship Audio -->
-<audio id="worship" src="instrumental.mp3" preload="auto" loop muted></audio>
-<button class="audioFab" id="audioFab">🔊 Tap to Unmute Worship</button>
-
-<script>
-  // Update year
-  document.getElementById('year').textContent=new Date().getFullYear();
-
-  // Audio button
-  const audio=document.getElementById('worship');
-  const fab=document.getElementById('audioFab');
-  audio.play().catch(()=>{});
-  fab.addEventListener('click',async()=>{
-    if(audio.muted){audio.muted=false;fab.textContent='🔇 Tap to Mute Worship';try{await audio.play();}catch{}}
-    else{audio.muted=true;fab.textContent='🔊 Tap to Unmute Worship';}
-  });
-</script>
-
-</body>
-</html>
+.btn{
+  background:linear-gradient(135deg, #b066ff, var(--gold)); /* slight purple gradient on buttons */
+  color:#1b1400; 
+  box-shadow:0 6px 22px rgba(255,215,0,.25), 0 0 8px rgba(176,102,255,.35); /* purple glow */
+}
+.btn:hover{
+  box-shadow:0 10px 28px rgba(255,215,0,.35), 0 0 12px rgba(176,102,255,.45);
+}
