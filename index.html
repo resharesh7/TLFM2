@@ -1,69 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>True Life Family and Ministries</title>
-<meta name="theme-color" content="#4B0082"/>
-
 <style>
-  :root{
-    --purple:#4B0082;
-    --gold:#FFD700;
-    --gold-soft:#ffe394;
-    --ink:#000;
-    --text:#fff;
-    --glass: rgba(0,0,0,.55);
+  :root {
+    --purple: #4B0082;
+    --gold: #FFD700;
+    --black: #000;
+    --text: #fff;
   }
-  *{box-sizing:border-box}
-  html,body{margin:0;background:#000;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif;scroll-behavior:smooth;overflow-x:hidden}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,sans-serif;color:var(--text);overflow-x:hidden;background:linear-gradient(180deg,var(--purple),var(--black));position:relative}
 
-  /* ===== BACKGROUND: SUNSET + GOLDEN RIVER ===== */
-  .sky{
-    position:fixed; inset:0; z-index:-4;
-    background:
-      radial-gradient(1200px 520px at 50% 58%, rgba(255,220,120,.35), transparent 60%),
-      linear-gradient(to top,
-        #0a0411 0%,
-        #1b0833 25%,
-        #3b0e6b 45%,
-        #8f44d6 65%,
-        #ffb464 82%,
-        #ffdba2 90%,
-        #2b0d4e 100%);
+  /* ===== Background Wave Effect ===== */
+  .wave{
+    position:absolute;bottom:0;width:200%;height:50%;background:linear-gradient(to top,rgba(255,215,0,0.1),transparent);opacity:0.4;
+    animation:waveMove 10s linear infinite;
+    z-index:0;
   }
-  .sun{
-    position:fixed; left:50%; top:55%;
-    width:min(36vmin,420px); height:min(36vmin,420px);
-    transform:translate(-50%,-50%);
-    background:radial-gradient(circle at 50% 50%, #fff4c1 0%, #ffd36b 40%, rgba(255,217,0,0) 70%);
-    mix-blend-mode:screen; opacity:.9; filter:blur(1px);
-    z-index:-3; animation:pulseSun 10s ease-in-out infinite;
+  @keyframes waveMove{
+    0%{transform:translateX(0)}
+    100%{transform:translateX(-50%)}
   }
-  @keyframes pulseSun{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.06)}}
 
-  /* Stylized golden river (SVG + animated turbulence + shimmer pass) */
-  .riverWrap{
-    position:fixed; left:0; right:0; bottom:0; height:46vh; z-index:-2; pointer-events:none;
-  }
-  svg#river{width:100%; height:100%; display:block}
-
-  /* ===== HEADER ===== */
-  header{
-    position:sticky; top:0; z-index:20;
-    background:var(--glass); backdrop-filter:saturate(140%) blur(8px);
-    border-bottom:1px solid rgba(255,215,0,.22);
-  }
-  .bar{
-    max-width:1200px; margin:0 auto; padding:.9rem 1rem;
-    display:flex; align-items:center; justify-content:space-between; gap:14px;
-  }
-  .brand{
-    display:flex; align-items:center; gap:.8rem; color:var(--gold); font-weight:800; letter-spacing:.3px;
-    text-shadow:0 0 16px rgba(255,215,0,.35);
-  }
-  .brand .mark{
-    width:38px; height:38px; position:relative; filter:drop-shadow(0 0 10px rgba(255,215,0,.6));
-  }
-  .brand .mark::before,.brand .mark::after{
-    content:""; position:absolute; left:5
+  /* ===== Floating Bible Icons ===== */
+  .bible{
+    position:absolute;font-size:28px;color:var(--gold);animation:floatUp linear infinite;opacity:
